@@ -1,0 +1,31 @@
+---
+output:
+    pdf_document:
+    html_document: default
+    number_sections: TRUE
+geometry: "a4paper, top=1.25in,bottom=1.25in,right=1.25in,left=1.25in"
+fontsize: 12pt
+---
+
+```{r abstract, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\begin{centering}
+
+\thispagestyle{empty}
+{\bf Abstract}
+
+\end{centering}
+
+The customer's risk profile is very important for both banks and _Peer-to-Peer_ (P2P) lending platforms to decide whether a customer could get a loan. In this paper we want to predict the FICO score of customers using one of supervised learning methods, namely _linear regression_. We build this model with significant features only, that are developed by a stepwise algorithm. Last, we create a model for predicting probability of meeting the given credit underwriting criteria using _logistic regression_. As a comparison we utilize one of the most commonly used of machine learning algorithms _support vector machines_. We find that the result of support vector machines with radial basis kernel has the greatest accuracy level. The codes corresponding to the paper are available on GitHub[^1].
+
+[^1]: https://github.com/hansalca1403/wissArbeiten/blob/main/P2P_Lending_Club.r
+
+# Introduction
+
+Banks are used to be the only option when it comes to get a loan. Banks usually require their customers an excellent credit score, otherwise the customers loan application will get rejected. When a customer asks for a large loan, the bank will offer a secured loan. That means that the customer has to provide collateral, such as property. When the customer fails to default the loan, the customer could lose the collateral. On the other hand, P2P lending is a process of obtaining financing from other individuals, as opposed to a financial intermediary like banks.
+
+P2P lenders give opportunity for customers who typically have been excluded from getting loans from the bank. It includes customers with lower -or even no- credit scores as well as zero assets. Banks are bricks and mortar institutions, even if they have online banking. They will have higher overhead which will impact the fees, interests, etc. Instead, P2P lending uses online marketplace. P2P lending websites connect borrowers to lenders or investors. The website settles rates and terms as well as enables the transaction.
+
+Some P2P platform will not allow anyone to invest easily, as they may prefer an accredited investor. From the borrower's perspective, they are labeled to certain risk categories set by the lender. The risk categories are assessed based on requested amount, public records, credit purposes, and income, which will help the lenders on selecting which borrowers they want to lend to. The borrower's benefit is typically more lenient credit requirements than the one from banks. On the other side, P2P lending creates potential for lenders to earn higher returns from their investment than other instruments like stock market or real estate.

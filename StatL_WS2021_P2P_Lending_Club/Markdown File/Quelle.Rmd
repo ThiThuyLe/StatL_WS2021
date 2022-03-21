@@ -1,0 +1,18 @@
+---
+output:
+    pdf_document:
+    html_document: default
+    number_sections: TRUE
+geometry: "a4paper, top=1.25in,bottom=1.25in,right=1.25in,left=1.25in"
+fontsize: 12pt
+---
+
+```{r quelle, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# References
+- James, G., Witten, D., Hastie, T., Tibshirani, R. (2013). An Introduction to Statistical Learning with Applications in R. New York, USA: Springer Texts in Statistics.
+- Murty, M.N., Raghava, R. (2016). Support Vector Machines and Perceptrons. Springer Briefs in Computer Science.
+- Suzuki, J. (2020). Statistical Learning with Math and R. Springer.
+- Awad, M., Khanna, R. (2015). Efficient Learning Machines. Apress.

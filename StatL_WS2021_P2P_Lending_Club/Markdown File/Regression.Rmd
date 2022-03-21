@@ -1,0 +1,196 @@
+---
+output:
+    pdf_document:
+    html_document: default
+    number_sections: TRUE
+geometry: "a4paper, top=1.25in,bottom=1.25in,right=1.25in,left=1.25in"
+fontsize: 12pt
+---
+
+```{r regression, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Linear Regression
+
+This chapter is about linear regression, a straightforward approach for supervised learning. Linear regression is useful for predicting quantitative response from a set of predictor variables. Moreover, it determines which variables in particular are significant predictors of the outcome variables and in what way do they _indicated by the beta estimates_ impact the outcome variable. These regression estimates are used to explain the relationship between predictor variable $X$ and response variable $Y$.
+
+
+### Simple Linear Regression
+
+_Simple linear regression_ is an approach for predicting a quantitative response $Y$ on the basis of a single predictor variable $X$. Assumed there is approximately a linear relationship between $X$ and $Y$. The linear relationship will be mathematically written as
+
+\begin{equation*}
+        Y \approx \beta_0 + \beta_1X    
+\end{equation*}
+
+$\beta_0$ and $\beta_1$ are unknown constants that designate the _intercept_ and _slope_ in the linear model and together they are known as the model _parameters_ . Then, after we have estimated $\hat{\beta_0}$ and $\hat{\beta_1}$ for the model parameters by using the training data, we can predict the response variable $Y$ by computing
+
+\begin{equation*}
+        \hat{y} = \hat{\beta_0} + \hat{\beta_1}x,    
+\end{equation*}
+
+with $\hat{y}$ designates the prediction of $Y$ on basis $X = x$.
+
+#### Estimating the Parameters
+\
+As said before, $\beta_0$ and $\beta_1$ are unknown. Before we make predictions, we have to use the data to estimate the parameters. Let
+
+\begin{equation*}
+        (x_1,y_1), (x_2,y_2),\dots, (x_n,y_n)    
+\end{equation*}
+
+designate n observation pairs, each of which consists of a measurement of $X$ and $Y$. The main objective here is to get paramater estimates $\hat{\beta_0}$ and $\hat{\beta_1}$ that fit the linear model, so that
+
+\begin{equation*}
+        \hat{y_i} \approx \hat{\beta_0} + \hat{\beta_1}x_i    
+\end{equation*}
+\begin{equation*}
+        i = 1,\dots,n.
+\end{equation*}
+
+Here we want to acquire parameters $\hat{\beta_0}$ and $\hat{\beta_1}$ that will make the regression line as close as possible to the $n$ data points. We will take the _least squares_ approach to acquire these parameters. Figure 1 represents the simple linear regression model.
+
+![Simple linear regression model, the red dots represent data points](/Users/hanstjong/OneDrive/HTW/B-WM/6. Sem/Seminar/Projektarbeit/RMarkdown/figures/simple linear regression cropped.png){width=350}
+
+
+Let $\hat{y_i} = \hat{\beta_0} + \hat{\beta_1}x_i$ be the prediction for $Y$ based on $x_i$ ($i$th value of $X$). Then $e_i=y_i-\hat{y_i}$ designates the $i$th _residual_. _Residual_ is the difference between $i$th actual response value and the $i$th predicted response value from our linear model. Next we define the _residual sum of squares_ (RSS) as
+
+\begin{equation*}
+        RSS = {e^2_1} + {e^2_2} + \cdots + {e^2_n},    
+\end{equation*}
+and furthermore
+\begin{equation*}
+        RSS = (y_1 - \hat{\beta_0} - \hat{\beta_1}x_1)^2 + (y_2 - \hat{\beta_0} - \hat{\beta_1}x_2)^2 + \cdots + (y_n - \hat{\beta_0} - \hat{\beta_1}x_n)^2.   
+\end{equation*}
+
+
+To obtain optimum $\hat{\beta_0}$ and $\hat{\beta_1}$, we have to minimize the RSS. The _least squares parameter estimates_ will be written as
+
+\begin{equation*}
+        \hat{\beta_1} = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{\sum_{i=1}^{n} (x_i - \overline{x})^2},    
+\end{equation*}
+\begin{equation*}
+        \hat{\beta_0} = \overline{y} - \hat{\beta_1}\overline{x},   
+\end{equation*}
+
+with $\overline{y} \equiv \frac{1}{n} \sum_{i=1}^{n}y_i$ and $\overline{x} \equiv \frac{1}{n} \sum_{i=1}^{n}x_i$ as the sample means.
+
+
+#### $R^2 \text{ Statistics}$
+\
+The $R^2$ statistic provides the measure of fit. It is the proportion of variability in $Y$ that can be explained by using $X$, has the value between 0 and 1, and also independent of the scale of $Y$.
+To calculate $R^2$, we use the formula
+
+\begin{equation*}
+        R^2 = 1 - \frac{RSS}{TSS},   
+\end{equation*}
+
+where TSS = $\sum(y_i - \overline{y})^2$ is the _total sum of squares_. TSS measures the total variance in Y. $R^2$ value near 0 indicates that the model did not explain much of the variability in the response, meaning that the regression model could be wrong.
+
+### Multiple Linear Regression
+
+As explained before, simple linear regression is a practical approach to predict a response on the basis of a single predictor variable. Unfortunately, in reality we often come up with more than one predictor variable. How do we integrate these extra predictors to make our analysis? One solution would be by making separate simple linear regressions, each of them using different predictor. This solution, however, is not that effective, because we will have different regression equation for each predictor so that a single prediction would be hard to conclude. Another thing is that by using simple linear regression, each of the equation will exclude the other predictors in forming estimates for the parameters. Instead, we will extend the simple linear regression by giving each predictor its own separate slope in a single model. Assumed that we have $i$ predictors:
+
+\begin{equation*}
+        Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_i X_i + \epsilon,   
+\end{equation*}
+
+where $X_i$ designates the $i$th predictor and $\beta_i$ is the slope for each $i$th predictor and is interpreted as the average effect on $Y$ of a one unit increase in $X_i$, while other predictors fixed. $\epsilon$ designates the residual of the regression.
+
+#### Estimating the Parameters
+\
+As we have shown in the simple linear regression, the regression parameters $\beta_0, \beta_1, \dots, \beta_i$ are also unknown and therefore must be estimated. Given estimates $\hat{\beta_0}, \hat{\beta_1}, \dots, \hat{\beta_i}$, we can make predictions using the formula
+
+\begin{equation*}
+        \hat{y} = \hat{\beta_0} + \hat{\beta_1} x_1 + \hat{\beta_2} x_2 + \cdots + \hat{\beta_i} x_i. \end{equation*}
+
+The parameters are going to be estimated by using the least square approach, like it was the case in simple linear regression. We choose $\beta_0,\beta_1,\dots,\beta_i$ to minimize the sum of squared residuals
+
+\begin{equation*}
+        RSS = \sum_{j=1}^{n}(y_j - \hat{y_j})^2
+\end{equation*}
+\begin{equation*}
+            = \sum_{j=1}^{n}(y_j - \hat{\beta_0} - \hat{\beta_1}x_{j1} - \hat{\beta_2}x_{j2} - \cdots - \hat{\beta_i}x_{ji})^2
+\end{equation*}
+
+#### Selecting Significant Variables
+\
+On many cases, it is possible that only some of the predictors are related with the response. To determine which predictors are related to the response, so that we can make a single model only for those predictors, is called _variable selection_. In our case, we will be using _Akaike Information Criterion_(AIC) to determine which variables are significant.
+
+## Logistic Regression
+
+In linear regression model, the response variable $Y$ is assumed quantitative. But in other situations, the response variable is instead qualitative or also referred as categorical. The task is now we predict the probability of each categories of a qualitative variable , as the base for making our final prediction. For example, if someone took a loan, then it's either they _have_ or _have not_ paid it back. Then we could code these qualitative response as:
+
+\begin{equation*}
+      Y = 
+        \begin{cases}
+            0 & \text{if not default}\\
+            1 & \text{if default}\\
+        \end{cases}
+\end{equation*}
+
+After that we could make a linear regression to this binary response, and predict **paid** if $Y$ > 0.5 and **unpaid** otherwise. But rather than making a linear model to this response, logistic regression models the probability that $Y$ belongs to a certain category. For example, the probability of default can be written as
+
+\begin{equation*}
+     p(X) = Pr(Y = 1|X)
+\end{equation*}
+
+### Logistic Model
+
+As mentioned before, the response variable in logistic regression is qualitative. Therefor we cannot model the probability by using linear regression model. One of the reasons is that the predicted probability value  would not fall between 0 and 1 if we use linear model. We must then model $p(X)$ using a function that gives results between 0 and 1 for all values of $X$. In logistic regression, we use the _logistic function_,
+
+\begin{equation*}
+      p(X) = \frac{e^{\beta_0+\beta_1X}}{1+e^{\beta_0+\beta_1X}}.
+\end{equation*}
+
+After a bit of manipulation, we got 
+
+\begin{equation*}
+     \frac{p(X)}{1 - p(X)} = e^{\beta_0+\beta_1X}.
+\end{equation*}
+
+The left-hand side of the equation is called the _odds_ and have value between 0 and $\infty$. Then by giving both sides the logarithm, we will have
+
+\begin{equation*}
+    \log \left(\frac{p(X)}{1 - p(X)}\right) = \beta_0+\beta_1X.
+\end{equation*}
+
+The left-hand side is now called the _log-odds_ or _logit_.
+
+#### Estimating the Parameters
+\
+The parameters $\beta_0$ and $\beta_1$ are also unknown like the case in linear regression and they need to be estimated based on training data. The preferred approach is the _maximum likelihood_. The idea is that we look for $\hat{\beta_0}$ and $\hat{\beta_1}$ by plugging these estimates into the model for $p(X)$ yields a number close to one for all $Y=1|X$, and a number close to zero for all $Y=0|X$. This can be formalized using _likelihood function_:
+
+\begin{equation*}
+    L(\beta_0, \beta_1) = \prod_{i:y_i = 1}p(x_i) \prod_{i':y_{i'}=0}(1 - p(x_{i'})).
+\end{equation*}
+
+The estimates $\hat{\beta_0}$ and $\hat{\beta_1}$ are chosen to maximize the likelihood function. For our topic we will not go deep into the mathematical details of maximum likelihood as it can be easily fit using **R** function that we will discuss more later on. Once the parameters have been estimated, we can put them in our model equation:
+
+\begin{equation*}
+      \hat{p}(X) = \frac{e^{\hat{\beta_0}+\hat{\beta_1X}}}{1+e^{\hat{\beta_0}+\hat{\beta_1X}}}.
+\end{equation*}
+
+
+### Multiple Logistic Regression
+
+Assumed now that we have multiple predictors. Just like on linear regression, we can extend the formula that we have as follows:
+
+\begin{equation*}
+    \log \left(\frac{p(X)}{1 - p(X)}\right) = \beta_0+\beta_1X+\cdots+\beta_pX_p,
+\end{equation*}
+
+where $X = (X_1,\dots,X_p)$ are $p$ predictors. The equation can be rewritten as
+
+\begin{equation*}
+      p(X) = \frac{e^{\beta_0+\beta_1X+\cdots+\beta_pX_p}}{1+e^{\beta_0+\beta_1X+\cdots+\beta_pX_p}}.
+\end{equation*}
+
+We also use the maximum likelihood to estimate $\beta_0,\beta_1,\dots,\beta_p$.
+
+
+
+
+
+

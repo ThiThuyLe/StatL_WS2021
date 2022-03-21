@@ -1,0 +1,26 @@
+---
+output:
+    pdf_document:
+    html_document: default
+    number_sections: TRUE
+geometry: "a4paper, top=1.25in,bottom=1.25in,right=1.25in,left=1.25in"
+fontsize: 12pt
+---
+
+```{r declaration, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+__Declaration of Authorship__
+\
+
+We hereby confirm that we have authored this Seminar paper independently and without use of others than the indicated sources. All passages (and codes) which are literally or in general matter taken out of publications or other sources are marked as such.
+
+\
+Berlin, 27 February 2022
+\begin{centering}
+\vspace{2.0cm}
+{Hans Alcahya Tjong}
+\hspace{4.0cm}
+{Ananda Eraz Irfananto}
+\end{centering}

@@ -1,0 +1,22 @@
+---
+output:
+    pdf_document:
+    html_document: default
+    number_sections: TRUE
+geometry: "a4paper, top=1.25in,bottom=1.25in,right=1.25in,left=1.25in"
+fontsize: 12pt
+---
+```{r methodology, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Methodology
+
+```{r regression, child='Regression.Rmd'}
+```
+
+```{r svm, child='SVM.Rmd'}
+```
+
+```{r confmatrix, child='ConfMatrix.Rmd'}
+```

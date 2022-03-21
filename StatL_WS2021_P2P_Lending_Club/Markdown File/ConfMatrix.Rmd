@@ -1,0 +1,44 @@
+---
+output:
+    pdf_document:
+    html_document: default
+    number_sections: TRUE
+geometry: "a4paper, top=1.25in,bottom=1.25in,right=1.25in,left=1.25in"
+fontsize: 12pt
+---
+
+```{r confmatrix, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Confusion Matrix
+A confusion matrix is a table used to describe the performance of a classification model. It compares the predictions with the actual value. The table consists of 4 different combinations of predicted and actual value.
+
+![Confusion matrix table](/Users/hanstjong/OneDrive/HTW/B-WM/6. Sem/Seminar/Projektarbeit/RMarkdown/figures/confmatrix.jpg){width=350}
+
+- **True Negative (TN)**: We predicted negative and it is actually negative.
+- **True Positive (TP)**: We predicted positive and it is actually positive.
+- **False Positive (FP)**: We predicted positive but it is actually negative. This is also called as "Type 1 Error"
+- **False Negative (FN)**: We predicted negative but it is actually positive. This is also called as "Type 2 Error"
+
+The performance metrics for confusion matrix are _accuracy, sensitivity and specificity_, which are calculated on the basis of classifier above.
+
+**Accuracy** represents the ratio of correctly classified points to the total number of points.
+\begin{equation*}
+        Accuracy = \frac{TP+TN}{TP+FP+FN+TN}   
+\end{equation*}
+
+**Sensitivity** represents the ratio of correctly predicted positive points to all actual positives.
+\begin{equation*}
+        Sensitivity = \frac{TP}{TP+FN}   
+\end{equation*}
+
+**Specificity** represents the ratio of correctly predicted negative points to all actual negatives.
+\begin{equation*}
+        Specificity = \frac{TN}{TN+FP}   
+\end{equation*}
+
+
+
+
+

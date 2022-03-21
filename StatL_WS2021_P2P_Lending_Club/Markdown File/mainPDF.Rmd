@@ -1,0 +1,73 @@
+---
+title: " "
+output:
+  pdf_document: 
+    number_sections: true
+geometry: "a4paper, top=1.25in,bottom=1.25in,right=1.25in,left=1.25in"
+fontsize: 12pt
+header-includes:
+  - \usepackage{float}
+  - \usepackage{sectsty}
+  - \usepackage{paralist}
+  - \usepackage{setspace}\spacing{1.5}
+  - \usepackage{fancyhdr}
+  - \usepackage{lastpage}
+  - \usepackage{dcolumn}
+  - \usepackage{natbib}\bibliographystyle{agsm}
+  - \usepackage[nottoc, numbib]{tocbibind}
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(tinytex.verbose = TRUE)
+```
+
+\allsectionsfont{\raggedright}
+\subsectionfont{\raggedright}
+\subsubsectionfont{\raggedright}
+
+\begin{centering}
+\thispagestyle{empty}
+\Huge
+{\bf P2P Lending Club }
+
+\vspace{0.2cm}
+\Large
+{Data Analysis}
+
+\vfill
+\small
+{by}
+
+\vspace{0.2cm}
+{Hans Alcahya Tjong (570795) \\ Ananda Eraz Irfananto (547048)}
+
+\vspace{0.5cm}
+{Winter semester 21/22}
+    
+\end{centering}
+
+
+\newpage
+\tableofcontents
+
+\newpage
+```{r abstract, child='Abstract_Introduction.Rmd'}
+```
+
+\newpage
+```{r methodology, child='Methodology.Rmd'}
+```
+
+\newpage
+```{r empirical, child='Empirical_Results.Rmd'}
+```
+
+\newpage
+```{r quelle, child='Quelle.Rmd'}
+```
+
+\newpage
+```{r declaration, child='Declaration.Rmd'}
+```
